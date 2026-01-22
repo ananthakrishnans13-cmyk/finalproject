@@ -1,0 +1,30 @@
+<div class="row g-4">
+  @for (item of books; track item.id) {
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <div class="card h-100">
+
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+
+          <!-- Author Details -->
+          @if (item.authors?.length > 0) {
+            <div class="mt-2">
+              @for (author of item.authors; track author.name) {
+                <p class="mb-1">
+                  👤 {{ author.name }}
+                </p>
+                <small class="text-muted">
+                  ({{ author.birth_year || 'N/A' }} –
+                  {{ author.death_year || 'N/A' }})
+                </small>
+              }
+            </div>
+          } @else {
+            <p class="text-muted">Author not available</p>
+          }
+
+        </div>
+      </div>
+    </div>
+  }
+</div>
